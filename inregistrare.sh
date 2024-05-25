@@ -5,7 +5,7 @@ if grep -q "^username," users.csv; then
         echo "Username deja folosit."
     else
         echo "Introdu parola"
-        read parola
+        read -s parola
         echo "Introdu adresa de mail"
         read mail
         verificare="^[a-zA-Z0-9._%+-]+@yahoo\.com$"
