@@ -1,8 +1,8 @@
 
-nume_user,parola,email,
-ion,1234,ionel@yahoo.com
-marcel,5678,marcel@yahoo.com
-doinita,9123,doinita@yahoo.com
-Gabriela,1111,gabriela@yahoo.com
-gigel,666,gigel@yahoo.com
-marian,111,marian@yahoo.com
+nume_user,parola,email,0
+ion,1234,ionel@yahoo.com,1
+marcel,5678,marcel@yahoo.com,2
+doinita,9123,doinita@yahoo.com,3
+Gabriela,1111,gabriela@yahoo.com,4
+gigel,666,gigel@yahoo.com,5
+marian,111,marian@yahoo.com,6
