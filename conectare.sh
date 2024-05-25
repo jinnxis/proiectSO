@@ -5,7 +5,7 @@ user_info=$(grep "^$username," users.csv)
 if [ -n "$user_info" ]; then
     corect=$(echo $user_info | cut -d',' -f2)
     echo "Introdu parola"
-    read password
+    read -s password
     if [ "$password" == "$corect" ]; then
         echo "Conectare reusita."
         cd "$username"
