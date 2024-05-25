@@ -1,0 +1,68 @@
+#pentru users.csv
+
+nume_user,parola,email,
+ion,1234,ionel@yahoo.com
+marcel,5678,marcel@yahoo.com
+doinita,9123,doinita@yahoo.com
+Gabriela,1111,gabriela@yahoo.com
+gigel,666,gigel@yahoo.com
+marian,111,marian@yahoo.com,
+
+#pentru login.sh 
+
+#!/bin/bash
+echo "Bine ai venit! Pentru conectare apasa 1, pentru inregistrare apasa 0!"
+read ok
+if [ $ok -eq 1 ]; then
+        source .conectare.sh
+elif [ $ok -eq 0 ]; then
+        echo "Alege un username"
+        source  .inregistrare.sh
+else
+        echo "Am inteles, nu doresti sa te conectezi/inregistrezi. Sa ai o zi buna!"
+fi
+
+#pentru .inregistrare.sh
+
+#!/bin/bash
+echo "Introdu username-ul dorit"
+read username
+if grep -q "^username," .users.csv; then
+        echo "Username deja folosit."
+    else
+        echo "Introdu parola"
+        read parola
+        echo "Introdu adresa de mail"
+        read mail
+        verificare="^[a-zA-Z0-9._%+-]+@yahoo\.com$"
+        if [[ $mail =~ $verificare ]]; then
+          echo "mail corect "
+          echo "$username,$parola,$mail," >> .users.csv
+          mkdir "$username"
+          echo "Utilizator creat!"
+          cd "$username"
+        else
+          echo "Adresa de mail incorecta"
+        fi
+    fi
+
+
+#pentru .conectare.sh
+
+#!/bin/bash
+echo "Introdu username"
+read username
+user_info=$(grep "^$username," .users.csv)
+if [ -n "$user_info" ]; then
+    corect=$(echo $user_info | cut -d',' -f2)
+    echo "Introdu parola"
+    read password
+    if [ "$password" == "$corect" ]; then
+        echo "Conectare reusita."
+        cd "$username"
+    else
+        echo "Parola gresita."
+    fi
+else
+    echo "Utilizator gresit. Iti sugeram inregistrarea!"
+fi
