@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Introdu username-ul dorit"
 read username
-if grep -q "^username," users.csv; then
+if grep -q "^$username," users.csv; then
         echo "Username deja folosit."
     else
         echo "Introdu parola"
