@@ -10,7 +10,8 @@ if grep -q "^$username," users.csv; then
         read mail
         verificare="^[a-zA-Z0-9._%+-]+@yahoo\.com$"
         if [[ $mail =~ $verificare ]]; then
-          echo "$username,$parola,$mail," >> users.csv
+          id=$(($(tail -n 1 "users.csv" | sed 's/.*,//') + 1))
+          echo "$username,$parola,$mail,$id" >> users.csv
           mkdir "$username"
           echo "Utilizator creat!"
           cd "$username"
