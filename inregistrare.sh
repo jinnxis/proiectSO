@@ -1,16 +1,17 @@
 #!/bin/bash
-echo "Introdu username-ul dorit"
+echo "Introdu username-ul dorit:"
 read username
 if grep -q "^$username," users.csv; then
         echo "Username deja folosit."
     else
-        echo "Introdu parola"
+        echo "Introdu parola:"
         read -s parola
-        echo "Introdu adresa de mail"
+        echo "Introdu adresa de mail:"
         read mail
-        verificare="^[a-zA-Z0-9._%+-]+@yahoo\.com$"
+        verificare="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
         if [[ $mail =~ $verificare ]]; then
-          id=$(($(tail -n 1 "users.csv" | sed 's/.*,//') + 1))
+          highest_id=$(awk -F',' 'NR>1 && $4+0==$4 {print $4}' users.csv | sort -rn | head -n 1)
+          id=$((highest_id + 1))
           echo "$username,$parola,$mail,$id" >> users.csv
           mkdir "$username"
           echo "Utilizator creat!"
