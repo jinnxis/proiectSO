@@ -1,8 +1,8 @@
 #!/bin/bash
 echo "Introdu username-ul dorit:"
 read username
-if [ ! -d "$Utilizatori" ]; then
-    mkdir -p "$Utilizatori"
+if [ ! -d "Utilizatori" ]; then
+    mkdir -p "Utilizatori"
 fi
 if grep -q "^$username," users.csv; then
         echo "Username deja folosit."
