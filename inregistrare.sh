@@ -18,7 +18,6 @@ if grep -q "^$username," users.csv; then
           echo "$username,$parola,$mail,$id" >> users.csv
           mkdir "Utilizatori/$username"
           echo "Utilizator creat!"
-          cd "Utilizatori/$username"
         else
           echo "Adresa de mail incorecta. Utilizatorul nu a fost creat!"
         fi
