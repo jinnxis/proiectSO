@@ -24,7 +24,9 @@ if [ -n "$user_info" ]; then
         current_time=$(date +%Y-%m-%d\ %H:%M:%S)
         new_user_info=$(echo "$user_info" | awk -v id_col="$user_id" -v time_col="$current_time" -F',' 'BEGIN {OFS=","} {$5 = time_col; print}')
         update_user_info "$username" "$new_user_info"
+        echo "$username" >> logged_in_users.csv
         cd "Utilizatori/$username"
+        source ../../logged_menu.sh "$username"
     else
         echo "Parola gresita."
     fi
