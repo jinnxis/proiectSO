@@ -1,5 +1,5 @@
 
-nume_user,parola,email,0
+nume_user,parola,email,id,last_login
 ion,1234,ionel@yahoo.com,1
 marcel,5678,marcel@yahoo.com,2
 doinita,9123,doinita@yahoo.com,3
