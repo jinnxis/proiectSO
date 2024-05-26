@@ -1,5 +1,16 @@
 #!/bin/bash
 
+utilizatori_logati=()
+
+ while IFS= read -r line; do
+    utilizatori_logati+=("$line")
+ done < logged_in_users.csv
+
+ echo "Utilizatori conectati:"
+for user in "${utilizatori_logati[@]}"; do
+    echo "$user"
+done
+
  echo "Alege o optiune:"
  echo "1. Inregistrare"
  echo "2. Login"
