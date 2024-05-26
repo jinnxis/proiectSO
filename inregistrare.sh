@@ -13,9 +13,9 @@ if grep -q "^$username," users.csv; then
           highest_id=$(awk -F',' 'NR>1 && $4+0==$4 {print $4}' users.csv | sort -rn | head -n 1)
           id=$((highest_id + 1))
           echo "$username,$parola,$mail,$id" >> users.csv
-          mkdir "$username"
+          mkdir "Utilizatori/$username"
           echo "Utilizator creat!"
-          cd "$username"
+          cd "Utilizatori/$username"
         else
           echo "Adresa de mail incorecta. Utilizatorul nu a fost creat!"
         fi
