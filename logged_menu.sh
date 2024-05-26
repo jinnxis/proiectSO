@@ -12,6 +12,7 @@ while true; do
         echo "Logging out..."
         awk -v user="$username" '$1 != user' ../../logged_in_users.csv > temp_file && mv temp_file ../../logged_in_users.csv
     cd ..
+    cd ..
         break
     else
         $command
