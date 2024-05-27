@@ -1,4 +1,4 @@
-
+#!/bin/bash
 echo "Introdu destinatarul"
 read nume
 user_info=$(grep "^$nume," ../../users.csv)
