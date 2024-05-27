@@ -12,7 +12,7 @@ if [ ! -d "Utilizatori" ]; then
     mkdir -p "Utilizatori"
 fi
 
-echo "Introdu username"
+echo "Introdu username:"
 read username
 
 user_info=$(grep "^$username," users.csv)
