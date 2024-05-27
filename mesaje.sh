@@ -4,7 +4,10 @@ echo "Introdu destinatarul"
 read nume
 user_info=$(grep "^$nume," ../../users.csv)
 if [ -n "$user_info" ]; then
-  adresa="../../Utilizatori/$nume/mail"
+  if [ ! -d "../../Utilizatori/$nume" ]; then
+      mkdir "../../Utilizatori/$nume"
+  fi
+  adresa="../../Utilizatori/$nume/mail.txt"
   if [ ! -f "$adresa" ]; then
     touch "$adresa"
   fi
@@ -15,6 +18,7 @@ if [ -n "$user_info" ]; then
 else
   echo "Mesajul nu a putut fi transmis"
 fi
+
 
 
 
